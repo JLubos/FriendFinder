@@ -18,6 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- For jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -53,7 +54,7 @@
 
 	<div class = "row">
 		<div class = "container">
-			<div class= "questions">
+			<div class= "question1">
 				<h2>Question 1</h2>
 				<p>
 				You like being to yourself.
@@ -67,7 +68,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question2">
 				<h2>Question 2</h2>
 				<p>
 				You are more introverted than extrovertred.
@@ -82,7 +83,7 @@
 				
 			</div>
 
-			<div class= "questions">
+			<div class= "question3">
 				<h2>Question 3</h2>
 				<p>
 				You like large crowds.
@@ -96,7 +97,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question4">
 				<h2>Question 4</h2>
 				<p>
 				Your a workoholic.
@@ -110,7 +111,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question5">
 				<h2>Question 5</h2>
 				<p>
 				I usually need a couple drinks to being in a talkative mood.
@@ -124,7 +125,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question6">
 				<h2>Question 6</h2>
 				<p>
 				I try to keep to myself to avoid conflict.
@@ -138,7 +139,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question7">
 				<h2>Question 7</h2>
 				<p>
 				I like to day dream a lot.
@@ -152,7 +153,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question8">
 				<h2>Question 8</h2>
 				<p>
 				Id rather have a few great friends that alot of good ones.
@@ -166,7 +167,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question9">
 				<h2>Question 9</h2>
 				<p>
 				I thrive under pressure.
@@ -180,7 +181,7 @@
 				</select> 
 			</div>
 
-			<div class= "questions">
+			<div class= "question10">
 				<h2>Question 10</h2>
 				<p>
 				Deep down, im creative.
@@ -197,14 +198,68 @@
 
 		 <button type="submit" class="btn btn-primary btn-block">Submit</button> 
 
+	<div class="modal-content">
+		<div class="modal-header">
+	    	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h2 class="modal-title"><strong>Best Match</strong></h2>
+	    </div>
+	    <div class="modal-body">
+	    	<h2 id="matchName"></h2>
+	        <img id="matchImg" src="" alt="">
+	    </div>
+	    <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    </div>
+	</div>
+
+</div>
+
 
 	</div>
 
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+
+		//On click, create a user object. Then compare that user object to the
+			// the friends in the friends arrray
+
+		$("#submit").on("click",function(){
+
+			//Capture the inputs
+			var user = {
+				name: $("#name").val().trim(),
+	    		photo: $("#photo").val().trim(),
+	    		scores: [$("#question1").val().trim(), $("#question2").val().trim(), $("#question3").val().trim(), $("#question4").val().trim(), $("#question5").val().trim(), $("#question6").val().trim(), $("#question7").val().trim(),$("#question8").val().trim(), $("#question9").val().trim(), $("#questio107").val().trim()]
+
+			}
+
+			//See if we are getting the user
+			console.log(user);
+
+			//Get URL of the website
+			var currentURL = window.location.origin;
 
 
+			//Post Route to post data to the friends api
+			$.post(currentURL + "/api/friends", user, function(data){
 
-	<script src = "../data/friends.js"></script>
+				// Show the modal with the best match
+	    		$("#matchName").text(data.name);
+	    		$('#matchImg').attr("src", data.photo);
+		    	$("#resultsModal").modal('toggle');
+	    	});
+			}
+			else
+			{
+			alert("Please fill out all fields before submitting!");
+			}
+    	
+    		return false;
+
+		});
+		
+
+
+	</script>
 
 
 </body>

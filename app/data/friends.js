@@ -2,7 +2,7 @@
 var friends = [
 	{
 		"name":"Sora",
-	  	"photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+	  	"photo":"https://s-media-cache-ak0.pinimg.com/736x/74/09/9d/74099dd33f2a5cb602ab17eed45750db--sora-kingdom-hearts-land.jpg",
 	  	"scores":[
 	      5,
 	      1,
@@ -14,12 +14,12 @@ var friends = [
 	      5,
 	      4,
 	      1
-	    ],
+	    ]
 
 	},
 	{
 		"name":"Riku",
-	  	"photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+	  	"photo":"http://www.iconninja.com/files/116/828/858/hearts-kingdom-riku-icon.png",
 	  	"scores":[
 	      1,
 	      5,
@@ -31,12 +31,12 @@ var friends = [
 	      1,
 	      2,
 	      5
-	    ],
+	    ]
 
 	},
 	{
 		"name":"Kairi",
-	  	"photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+	  	"photo":"https://s.yimg.com/wv/images/24bee0803c53919dfc28f53d1837fb44_96.jpg",
 	  	"scores":[
 	      2,
 	      4,
@@ -48,7 +48,7 @@ var friends = [
 	      2,
 	      3,
 	      4
-	    ],
+	    ]
 
 	}
 
@@ -57,7 +57,7 @@ var friends = [
 module.exports = friends;
 
 
-/*
+/* CLick Button logic
 $('btn').on("click", function(event){
 	event.preventDefault();
 
